@@ -70,11 +70,48 @@ mongo_op.insert_record(records, collection_name)
 ### 4️⃣ Bulk insert from CSV or Excel
 
 ```python
-# CSV
+# CSV (make sure your CSV is properly formatted)
 mongo_op.bulk_insert("data.csv", collection_name)
 
 # Excel
 mongo_op.bulk_insert("data.xlsx", collection_name)
+```
+
+### 5️⃣ Find records
+
+```python
+query = {"age": {"$gt": 25}}
+results = mongo_op.find_record(query, collection_name)
+for doc in results:
+    print(doc)
+```
+
+### 6️⃣ Update a record
+
+```python
+query = {"name": "Alice"}
+update = {"$set": {"age": 31}}
+mongo_op.update_record(query, update, collection_name)
+```
+
+### 7️⃣ Delete a record
+
+```python
+query = {"name": "Bob"}
+mongo_op.delete_record(query, collection_name)
+```
+
+### 8️⃣ Delete multiple records
+
+```python
+query = {"age": {"$lt": 30}}
+mongo_op.delete_many_record(query, collection_name)
+```
+
+### 9️⃣ Delete all records in a collection
+
+```python
+mongo_op.delete_all_record(collection_name)
 ```
 
 ---
@@ -104,24 +141,43 @@ mypy src/
 ## 🗂️ Project Structure
 
 ```
-my-py-package/
-│
-├── src/
-│   └── Auto_connect_mongo/
-│       ├── __init__.py
-│       └── mongo_crud.py
-│
-├── tests/
-│   ├── unit/
-│   └── integration/
-│
-├── requirements.txt
-├── requirements_dev.txt
-├── setup.py
-├── setup.cfg
-├── tox.ini
-└── README.md
+📦 my-py-package/
+├── 🗂️ src/
+│   ├── 📄 __init__.py
+│   └── 🗂️ Auto_connect_mongo/
+│       ├── 📄 __init__.py
+│       └── 📄 mongo_crud.py
+├── 🧪 tests/
+│   ├── 📄 __init__.py
+│   ├── 🗂️ unit/
+│   │   ├── 📄 __init__.py
+│   │   └── 🧪 test_unit.py
+│   └── 🗂️ integration/
+│       ├── 📄 __init__.py
+│       └── 🧪 test_int.py
+├── 🧪 experiments/
+│   └── 📓 experiments.ipynb
+├── ⚙️ .github/
+│   └── 🔄 workflows/
+│       ├── 🤖 ci.yaml
+│       └── 🚀 python-publish.yaml
+├── 📄 LICENSE
+├── 📄 README.md
+├── 🛠️ init_setup.sh
+├── 📝 pyproject.toml
+├── 📄 requirements.txt
+├── 🧪 requirements_dev.txt
+├── ⚙️ setup.cfg
+├── 🛠️ setup.py
+├── 📝 template.py
+├── 🧪 test.py
+├── ⚙️ tox.ini
+└── 📄 .gitignore
 ```
+
+---
+
+_Note: All methods expect the correct types for arguments (e.g., `record` as dict or list of dicts, `query` as dict, etc.). For bulk insert, ensure your CSV/Excel files are well-formatted. For more details, see the source code!_
 
 ---
 

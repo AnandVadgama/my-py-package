@@ -69,3 +69,23 @@ class mongo_operation:
         datajson=json.loads(dataframe.to_json(orient='record'))
         collection=self.create_collection()
         collection.insert_many(datajson)
+
+    def find_record(self,query: dict, collection_name: str) -> Any:
+        collection=self.create_collection(collection_name)
+        return collection.find(query)
+    
+    def update_record(self,query: dict, update: dict, collection_name: str) -> Any:
+        collection=self.create_collection(collection_name)
+        return collection.update_one(query, update)
+    
+    def delete_record(self,query: dict, collection_name: str) -> Any:
+        collection=self.create_collection(collection_name)
+        return collection.delete_one(query)
+    
+    def delete_many_record(self,query: dict, collection_name: str) -> Any:
+        collection=self.create_collection(collection_name)
+        return collection.delete_many(query)
+    
+    def delete_all_record(self,collection_name: str) -> Any:
+        collection=self.create_collection(collection_name)
+        return collection.delete_many({})
