@@ -172,13 +172,3 @@ _Note: All methods expect the correct types for arguments (e.g., `record` as dic
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
-
-- **AnandVadgama** - [GitHub](https://github.com/AnandVadgama)
-
----
-
-> Made with ❤️ for MongoDB fans and Pythonistas everywhere!
