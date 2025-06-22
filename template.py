@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-package_name = "Auto-connect-mongo"
+package_name = "Auto_connect_mongo"
 
 list_of_files = [
    ".github/workflows/ci.yaml",
